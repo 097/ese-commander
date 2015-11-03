@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ApduExecutorActivity extends Activity {
@@ -133,9 +134,12 @@ public class ApduExecutorActivity extends Activity {
 
     private class ExecuteESETask extends AsyncTask<APDUFileContent, Void, ExecuteApduResult> {
 
+        private String taskName;
+
         @Override
         protected ExecuteApduResult doInBackground(APDUFileContent... params) {
             File file = params[0].filePath;
+            taskName = params[0].name;
 
             if (!file.isDirectory() && file.exists()) {
                 List<APDU> apdus = getApdus(file);
@@ -159,12 +163,14 @@ public class ApduExecutorActivity extends Activity {
         protected void onPostExecute(ExecuteApduResult executeApduResult) {
             super.onPostExecute(executeApduResult);
             mPanelView.setEnabled(true);
+            mMsgView.setText(getString(R.string.execution_finish, taskName, executeApduResult.totalCount, executeApduResult.successCount, new Date().toString()));
         }
 
         @Override
         protected void onCancelled(ExecuteApduResult executeApduResult) {
             super.onCancelled(executeApduResult);
             mPanelView.setEnabled(true);
+            mMsgView.setText(R.string.execution_canceled);
         }
     }
 

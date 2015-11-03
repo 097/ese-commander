@@ -163,7 +163,14 @@ public class ApduExecutorActivity extends Activity {
         protected void onPostExecute(ExecuteApduResult executeApduResult) {
             super.onPostExecute(executeApduResult);
             mPanelView.setEnabled(true);
-            mMsgView.setText(getString(R.string.execution_finish, taskName, executeApduResult.totalCount, executeApduResult.successCount, new Date().toString()));
+            if (executeApduResult.successCount == executeApduResult.totalCount) {
+                mMsgView.setText(getString(R.string.execution_finish, taskName, executeApduResult.totalCount, executeApduResult.successCount, new Date().toString()));
+            } else {
+                if (executeApduResult.lastSw == null) {
+                    executeApduResult.lastSw = "null";
+                }
+                mMsgView.setText(getString(R.string.execution_finish_with_error, taskName, executeApduResult.totalCount, executeApduResult.successCount, executeApduResult.lastSw, new Date().toString()));
+            }
         }
 
         @Override

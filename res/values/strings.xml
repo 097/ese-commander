@@ -5,4 +5,5 @@
     <string name="msg_finish_scan">Finish scan, find %s apdu file</string>
     <string name="execution_canceled">Execution canceled</string>
     <string name="execution_finish">Execution finished\nTask name: %1$s\nTotal apdu: %2$s, success: %3$s\nTime: %4$s</string>
+    <string name="execution_finish_with_error">Execution finished\nTask name: %1$s\nTotal apdu: %2$s, success: %3$s, last sw: %4$s\nTime: %5$s</string>
 </resources>

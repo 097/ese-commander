@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">eSE Commander</string>
+    <string name="msg_start_scan">Scanning under %s</string>
+    <string name="msg_finish_scan">Finish scan, find %s apdu file</string>
+</resources>

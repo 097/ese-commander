@@ -10,6 +10,8 @@
     <uses-permission android:name="com.miui.permission.ACCESS_ESE"/>
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+        <uses-library android:name="com.android.nfc_extras" android:required="true" />
+
         <activity android:name="com.miui.ese.commander.ApduExecutorActivity"
                   android:label="@string/app_name">
             <intent-filter>

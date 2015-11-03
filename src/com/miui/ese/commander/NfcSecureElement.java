@@ -39,11 +39,17 @@ public class NfcSecureElement implements INfcSecureElement {
             return null;
         }
 
+        Log.i(TAG, "send apdu: " + HexDump.toHexString(apdu));
         byte[] result = null;
         try {
             result = nfcEnv.transceive(apdu);
         } catch (Exception e) {
             Log.e(TAG, "error when exchange apdu", e);
+        }
+        if (result != null) {
+            Log.i(TAG, "resp apdu: " + HexDump.toHexString(result));
+        } else {
+            Log.i(TAG, "resp apdu is null");
         }
 
         return result;
